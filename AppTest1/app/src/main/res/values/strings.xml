@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">AppTest1</string>
-    <string name="titleCount">Compteur</string>
-    <string name="btnCount">+1</string>
-    <string name="nbCount">Vous avez appuyé 0 fois</string>
-</resources>
