@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView fahTempResult;
     private EditText celTemp;
     private EditText fahTemp;
+    private String emptyText;
     private double fahrenheit;
     private double celsius;
     @Override
@@ -48,13 +49,15 @@ public class MainActivity extends AppCompatActivity {
                     {
                         if( keyCode == KeyEvent.KEYCODE_ENTER )
                         {
-                            fahrenheit = Integer.parseInt(s.toString());
-                            String txtFahTemp =  "Il fait : "+fahrenheit+" F°";
-                            fahTempResult.setText(txtFahTemp);
-                            celsius = (fahrenheit-32)*5/9;
-                            String txtCelResult =  "Il fait : "+celsius+" C°";
-                            celTempResult.setText(txtCelResult);
-                            return true;
+                            if(fahTemp.getText() != null) {
+                                fahrenheit = Integer.parseInt(s.toString());
+                                String txtFahTemp = "Il fait : " + fahrenheit + " F°";
+                                fahTempResult.setText(txtFahTemp);
+                                celsius = (fahrenheit - 32) * 5 / 9;
+                                String txtCelResult = "Il fait : " + celsius + " C°";
+                                celTempResult.setText(txtCelResult);
+                                return true;
+                            }
                         }
                         return false;
                     }
@@ -83,12 +86,15 @@ public class MainActivity extends AppCompatActivity {
                     {
                         if( keyCode == KeyEvent.KEYCODE_ENTER )
                         {
-                            celsius = Integer.parseInt(s.toString());
-                            String txtCelResult =  "Il fait : "+celsius+" C°";
-                            celTempResult.setText(txtCelResult);
-                            fahrenheit = celsius * 9/5 +32;
-                            String txtFahResult =  "Il fait : "+fahrenheit+" F°";
-                            fahTempResult.setText(txtFahResult);
+                            if(celTemp.getText() != null) {
+                                celsius = Integer.parseInt(s.toString());
+                                String txtCelResult = "Il fait : " + celsius + " C°";
+                                celTempResult.setText(txtCelResult);
+                                fahrenheit = celsius * 9 / 5 + 32;
+                                String txtFahResult = "Il fait : " + fahrenheit + " F°";
+                                fahTempResult.setText(txtFahResult);
+                            }
+
                             return true;
                         }
                         return false;
