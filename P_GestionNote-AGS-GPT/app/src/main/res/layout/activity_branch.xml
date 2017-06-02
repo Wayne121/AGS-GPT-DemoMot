@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gomesan.p_gestionnote_ags_gpt.BranchActivity">
+
+    <Button
+        android:id="@+id/bBranch2"
+        android:layout_width="115dp"
+        android:layout_height="66dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Soci"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bBranch1" />
+
+    <Button
+        android:id="@+id/bBranch3"
+        android:layout_width="115dp"
+        android:layout_height="66dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Anglais"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bBranch2" />
+
+    <Button
+        android:id="@+id/bBranch4"
+        android:layout_width="115dp"
+        android:layout_height="66dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Math"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bBranch3" />
+
+    <Button
+        android:id="@+id/bBranch5"
+        android:layout_width="115dp"
+        android:layout_height="66dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="SNAT"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bBranch4" />
+
+    <Button
+        android:id="@+id/bBranch6"
+        android:layout_width="115dp"
+        android:layout_height="66dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="ECOE"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bBranch5" />
+
+    <Button
+        android:id="@+id/bBranch1"
+        android:layout_width="115dp"
+        android:layout_height="66dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Laco"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
