@@ -122,9 +122,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MarkClass markClass = new MarkClass();
                 markClass.setIdMark(Integer.parseInt(cursor.getString(0)));
                 markClass.setMarName(cursor.getString(1));
-                markClass.setMarNote(cursor.getDouble(2));
-                markClass.setMarYear(cursor.getInt(3));
-                markClass.setIdBranch(cursor.getInt(4));
+                markClass.setMarNote(Double.parseDouble(cursor.getString(2)));
+                markClass.setMarYear(Integer.parseInt(cursor.getString(3)));
+                markClass.setIdBranch(Integer.parseInt(cursor.getString(4)));
 
                 markList.add(markClass);
             }while (cursor.moveToNext());
