@@ -24,7 +24,8 @@ public class BranchActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), NoteActivity.class);
-            i.putExtra("nom", "George");
+            i.putExtra("branchName", "1");
+            i.putExtra("year", "1");
             startActivity(i);
         }
     };
