@@ -8,28 +8,8 @@ public class MarkClass {
 
     int idMark;
     String marName;
-    double marNote;
-    int marYear;
-    int idBranch;
-
-    public MarkClass(){
-
-    }
-
-    public MarkClass(String marName, double marNote, int marYear, int idBranch){
-        this.marName = marName;
-        this.marNote = marNote;
-        this.marYear = marYear;
-        this.idBranch = idBranch;
-    }
-
-    public MarkClass(int idMark, String marName, double marNote, int marYear, int idBranch){
-        this.idMark = idMark;
-        this.marName = marName;
-        this.marNote = marNote;
-        this.marYear = marYear;
-        this.idBranch = idBranch;
-    }
+    String marNote;
+    String marYear;
 
     public int getIdMark() {
         return idMark;
@@ -47,27 +27,49 @@ public class MarkClass {
         this.marName = marName;
     }
 
-    public double getMarNote() {
+    public String getMarNote() {
         return marNote;
     }
 
-    public void setMarNote(double marNote) {
+    public void setMarNote(String marNote) {
         this.marNote = marNote;
     }
 
-    public int getMarYear() {
+    public String getMarYear() {
         return marYear;
     }
 
-    public void setMarYear(int marYear) {
+    public void setMarYear(String marYear) {
         this.marYear = marYear;
     }
 
-    public int getIdBranch() {
+    public String getIdBranch() {
         return idBranch;
     }
 
-    public void setIdBranch(int idBranch) {
+    public void setIdBranch(String idBranch) {
         this.idBranch = idBranch;
     }
+
+    String idBranch;
+
+    public MarkClass() {
+
+    }
+
+    public MarkClass(String marName, String marNote, String marYear, String idBranch) {
+        this.marName = marName;
+        this.marNote = marNote;
+        this.marYear = marYear;
+        this.idBranch = idBranch;
+    }
+
+    public MarkClass(int idMark, String marName, String marNote, String marYear, String idBranch) {
+        this.idMark = idMark;
+        this.marName = marName;
+        this.marNote = marNote;
+        this.marYear = marYear;
+        this.idBranch = idBranch;
+    }
+
 }

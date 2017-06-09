@@ -26,6 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static  final String KEY_NOTE_NOTE = "marNote";
     private static  final String KEY_YEAR_NOTE = "marYear";
     private static  final String KEY_YEAR_BRANCH = "braYear";
+    private static  final String KEY_IDBRANCH_NOTE = "idBranch";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -35,13 +36,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createMarkTable = "CREATE TABLE " + TABLE_MARK + "("
                 + KEY_ID_MARK + " INTEGER PRIMARY KEY," + KEY_NAME_NOTE + " TEXT,"
-                + KEY_NOTE_NOTE + " DOUBLE," + KEY_YEAR_NOTE + " INT" + ")";
+                + KEY_NOTE_NOTE + " TEXT," + KEY_YEAR_NOTE + " TEXT,"  + KEY_IDBRANCH_NOTE + " TEXT" + ")";
         db.execSQL(createMarkTable);
 
-        String createBranchTable = "CREATE TABLE " + TABLE_BRANCH + "("
-                + KEY_ID_BRANCH + " INTEGER PRIMARY KEY," + KEY_TEXT_BRANCH + " TEXT,"
-                + KEY_YEAR_NOTE + " INT" + ")";
-        db.execSQL(createBranchTable);
+       // String createBranchTable = "CREATE TABLE " + TABLE_BRANCH + "("
+       //         + KEY_ID_BRANCH + " INTEGER PRIMARY KEY," + KEY_TEXT_BRANCH + " TEXT,"
+       //         + KEY_YEAR_NOTE + " INTEGER" + ")";
+       // db.execSQL(createBranchTable);
     }
 
     @Override
@@ -50,8 +51,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BRANCH);
         onCreate(db);
 
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MARK);
-        onCreate(db);
+        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_MARK);
+        //onCreate(db);
     }
 
 
@@ -59,7 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_ID_MARK, markClass.getIdMark());
+        //values.put(KEY_ID_MARK, markClass.getIdMark());
         values.put(KEY_NAME_NOTE, markClass.getMarName());
         values.put(KEY_NOTE_NOTE, markClass.getMarNote());
         values.put(KEY_YEAR_NOTE, markClass.getMarYear());
@@ -84,13 +85,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     MarkClass getMark(int id){
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_MARK, new String[] {KEY_ID_MARK, KEY_NAME_NOTE, KEY_NOTE_NOTE, KEY_YEAR_NOTE, KEY_ID_BRANCH}, KEY_ID_MARK + "=?",
+        Cursor cursor = db.query(TABLE_MARK, new String[] {KEY_ID_MARK, KEY_NAME_NOTE, KEY_NOTE_NOTE, KEY_YEAR_NOTE, KEY_IDBRANCH_NOTE}, KEY_ID_MARK + "=?",
                 new String[]{String.valueOf(id)},null,null,null,null);
         if(cursor != null) {
             cursor.moveToFirst();
         }
 
-        MarkClass markClass = new MarkClass(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getDouble(2), cursor.getInt(3), cursor.getInt(4));
+        MarkClass markClass = new MarkClass(Integer.parseInt(cursor.getString(0)), cursor.getString(1),  cursor.getString(2),cursor.getString(3), cursor.getString(4));
 
         return markClass;
     }
@@ -109,10 +110,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return branchClass;
     }
 
-    public List<MarkClass> getAllMark() {
+    public List<MarkClass> getAllMark(String year, String branch) {
         List<MarkClass> markList = new ArrayList<>();
 
-        String selectQuery = "SELECT * FROM " + TABLE_MARK;
+        String selectQuery = "SELECT * FROM " + TABLE_MARK + " WHERE " + KEY_YEAR_NOTE + " = " + year + " AND " + KEY_IDBRANCH_NOTE + " = " + branch;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -122,9 +123,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 MarkClass markClass = new MarkClass();
                 markClass.setIdMark(Integer.parseInt(cursor.getString(0)));
                 markClass.setMarName(cursor.getString(1));
-                markClass.setMarNote(Double.parseDouble(cursor.getString(2)));
-                markClass.setMarYear(Integer.parseInt(cursor.getString(3)));
-                markClass.setIdBranch(Integer.parseInt(cursor.getString(4)));
+                markClass.setMarNote(cursor.getString(2));
+                markClass.setMarYear(cursor.getString(3));
+                markClass.setIdBranch(cursor.getString(4));
 
                 markList.add(markClass);
             }while (cursor.moveToNext());
