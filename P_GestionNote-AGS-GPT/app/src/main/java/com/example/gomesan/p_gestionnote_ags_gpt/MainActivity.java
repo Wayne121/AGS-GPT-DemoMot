@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
-            i.putExtra("nom", "George");
+            i.putExtra("year", "1");
             startActivity(i);
         }
     };
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
-            i.putExtra("nom", "George");
+            i.putExtra("year", "2");
             startActivity(i);
         }
     };
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
-            i.putExtra("nom", "George");
+            i.putExtra("year", "3");
             startActivity(i);
         }
     };
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
-            i.putExtra("nom", "George");
+            i.putExtra("year", "4");
             startActivity(i);
         }
     };

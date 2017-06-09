@@ -5,24 +5,10 @@ package com.example.gomesan.p_gestionnote_ags_gpt;
  */
 
 public class BranchClass {
+
     int idBranch;
     String braText;
-    int braYear;
-
-    public BranchClass(){
-
-    }
-
-    public BranchClass(String braText, int braYear){
-        this.braText = braText;
-        this.braYear = braYear;
-    }
-
-    public BranchClass(int idBranch, String braText, int braYear){
-        this.idBranch = idBranch;
-        this.braText = braText;
-        this.braYear = braYear;
-    }
+    String braYear;
 
     public int getIdBranch() {
         return idBranch;
@@ -40,11 +26,28 @@ public class BranchClass {
         this.braText = braText;
     }
 
-    public int getBraYear() {
+    public String getBraYear() {
         return braYear;
     }
 
-    public void setBraYear(int braYear) {
+    public void setBraYear(String braYear) {
         this.braYear = braYear;
     }
+
+
+    public BranchClass(){
+
+    }
+
+    public BranchClass(String braText, String braYear){
+        this.braText = braText;
+        this.braYear = braYear;
+    }
+
+    public BranchClass(int idBranch, String braText, String braYear){
+        this.idBranch = idBranch;
+        this.braText = braText;
+        this.braYear = braYear;
+    }
+
 }

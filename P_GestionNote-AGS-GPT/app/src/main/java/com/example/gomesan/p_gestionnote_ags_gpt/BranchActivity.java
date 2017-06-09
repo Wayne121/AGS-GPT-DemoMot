@@ -1,34 +1,46 @@
 package com.example.gomesan.p_gestionnote_ags_gpt;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class BranchActivity extends AppCompatActivity {
+
+    private ViewGroup layout;
+    private Button bBranch;
+    private DatabaseHelper db = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_branch);
 
-        Button bBranch1 = (Button) findViewById(R.id.bBranch1);
-        bBranch1.setOnClickListener(noteLaco);
-    }
+        Bundle extras = getIntent().getExtras();
+        String years = extras.getString("year");
+        db.addBranch(new BranchClass("bonjour", "1"));
+       // List<BranchClass> branchClasses = db.getAllBranch();
 
-    private View.OnClickListener noteLaco = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent i = new Intent(getApplicationContext(), NoteActivity.class);
-            i.putExtra("branchName", "1");
-            i.putExtra("year", "1");
-            startActivity(i);
-        }
-    };
+        // for (BranchClass c : branchClasses) {
+        //displayBranch("test");
+        //}
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -44,10 +56,57 @@ public class BranchActivity extends AppCompatActivity {
                 this.startActivity(intent);
                 return true;
             case R.id.menu_branch:
-                Toast.makeText(this, "Settings menu selected", Toast.LENGTH_LONG).show();
+               onCreateDialog();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public void onCreateDialog() {
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(BranchActivity.this);
+        final View mView = getLayoutInflater().inflate(R.layout.layout_addbutton, null);
+
+
+        Button bSend = (Button) mView.findViewById(R.id.bSend);
+        bSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final EditText txtName = (EditText) mView.findViewById(R.id.txtName);
+                Log.i("test", ("nya " + txtName.getText().toString() ));
+                addButtonBD(txtName.getText().toString());
+            }
+        });
+
+        mBuilder.setView(mView);
+        AlertDialog dialog = mBuilder.create();
+        dialog.show();
+    }
+
+    private void addButtonBD(String name){
+
+        Bundle extras = getIntent().getExtras();
+        String years = extras.getString("year");
+
+        db.addBranch(new BranchClass(name, years));
+        displayBranch(name);
+
+    }
+
+    @SuppressLint("InlinedApi")
+    private void displayBranch(String name) {
+
+        LayoutInflater inflater = LayoutInflater.from(this);
+        int id = R.layout.layout_addbutton;
+
+
+        LinearLayout relativeLayout = (LinearLayout) inflater.inflate(id, null, false);
+        bBranch = (Button) relativeLayout.findViewById(R.id.bBranch);
+
+        bBranch.setText(name);
+
+        layout.addView(relativeLayout);
+    }
+
+
 }
