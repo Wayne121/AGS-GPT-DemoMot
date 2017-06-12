@@ -1,9 +1,6 @@
 package com.example.gomesan.p_gestionnote_ags_gpt;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -89,7 +85,7 @@ public class NoteActivity extends AppCompatActivity {
 
     public void onCreateDialog() {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(NoteActivity.this);
-        final View mView = getLayoutInflater().inflate(R.layout.layout_addnote, null);
+        final View mView = getLayoutInflater().inflate(R.layout.layout_addbutton, null);
 
 
         Button bSend = (Button) mView.findViewById(R.id.bSend);

@@ -15,9 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -31,15 +28,18 @@ public class BranchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_branch);
+        layout = (ViewGroup) findViewById(R.id.content);
+        GridLayout gridLayout = (GridLayout) findViewById(R.id.content);
+        gridLayout.setColumnCount(3);
 
         Bundle extras = getIntent().getExtras();
         String years = extras.getString("year");
-        db.addBranch(new BranchClass("bonjour", "1"));
-       // List<BranchClass> branchClasses = db.getAllBranch();
+       // db.addBranch(new BranchClass("bonjour", years));
 
-        // for (BranchClass c : branchClasses) {
-        //displayBranch("test");
-        //}
+        List<BranchClass> branchClasses = db.getAllBranch(years);
+        for (BranchClass c : branchClasses) {
+            displayBranch(c.getBraText());
+        }
     }
 
     @Override
@@ -97,7 +97,7 @@ public class BranchActivity extends AppCompatActivity {
     private void displayBranch(String name) {
 
         LayoutInflater inflater = LayoutInflater.from(this);
-        int id = R.layout.layout_addbutton;
+        int id = R.layout.layout_showbutton;
 
 
         LinearLayout relativeLayout = (LinearLayout) inflater.inflate(id, null, false);

@@ -27,6 +27,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static  final String KEY_YEAR_NOTE = "marYear";
     private static  final String KEY_YEAR_BRANCH = "braYear";
     private static  final String KEY_IDBRANCH_NOTE = "idBranch";
+    private String createMarkTable = "CREATE TABLE " + TABLE_MARK + "("
+            + KEY_ID_MARK + " INTEGER PRIMARY KEY," + KEY_NAME_NOTE + " TEXT,"
+            + KEY_NOTE_NOTE + " TEXT," + KEY_YEAR_NOTE + " TEXT,"  + KEY_IDBRANCH_NOTE + " TEXT" + ")";
+    private String createBranchTable = "CREATE TABLE " + TABLE_BRANCH + "("
+            + KEY_ID_BRANCH + " INTEGER PRIMARY KEY," + KEY_TEXT_BRANCH + " TEXT,"
+            + KEY_YEAR_BRANCH + " TEXT" + ")";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -34,14 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createMarkTable = "CREATE TABLE " + TABLE_MARK + "("
-                + KEY_ID_MARK + " INTEGER PRIMARY KEY," + KEY_NAME_NOTE + " TEXT,"
-                + KEY_NOTE_NOTE + " TEXT," + KEY_YEAR_NOTE + " TEXT,"  + KEY_IDBRANCH_NOTE + " TEXT" + ")";
         db.execSQL(createMarkTable);
-
-        String createBranchTable = "CREATE TABLE " + TABLE_BRANCH + "("
-                + KEY_ID_BRANCH + " INTEGER PRIMARY KEY," + KEY_TEXT_BRANCH + " TEXT,"
-                + KEY_YEAR_NOTE + " TEXT" + ")";
         db.execSQL(createBranchTable);
     }
 
@@ -98,7 +97,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     BranchClass getBranch(int id){
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_BRANCH, new String[] {KEY_ID_MARK, KEY_TEXT_BRANCH, KEY_YEAR_BRANCH}, KEY_ID_BRANCH + "=?",
+        Cursor cursor = db.query(TABLE_BRANCH, new String[] {KEY_ID_BRANCH, KEY_TEXT_BRANCH, KEY_YEAR_BRANCH}, KEY_ID_BRANCH + "=?",
                 new String[]{String.valueOf(id)},null,null,null,null);
         if(cursor != null) {
             cursor.moveToFirst();
@@ -132,10 +131,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return markList;
     }
 
-    public List<BranchClass> getAllBranch() {
+    public List<BranchClass> getAllBranch(String year) {
         List<BranchClass> branchList = new ArrayList<>();
 
-        String selectQuery = "SELECT * FROM " + TABLE_BRANCH;
+        String selectQuery = "SELECT * FROM " + TABLE_BRANCH + " WHERE " + KEY_YEAR_BRANCH + " = " + year;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
