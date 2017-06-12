@@ -85,7 +85,7 @@ public class NoteActivity extends AppCompatActivity {
 
     public void onCreateDialog() {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(NoteActivity.this);
-        final View mView = getLayoutInflater().inflate(R.layout.layout_addbutton, null);
+        final View mView = getLayoutInflater().inflate(R.layout.layout_addnote, null);
 
 
         Button bSend = (Button) mView.findViewById(R.id.bSend);

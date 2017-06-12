@@ -2,6 +2,7 @@ package com.example.gomesan.p_gestionnote_ags_gpt;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,12 +35,15 @@ public class BranchActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String years = extras.getString("year");
-       // db.addBranch(new BranchClass("bonjour", years));
+
 
         List<BranchClass> branchClasses = db.getAllBranch(years);
         for (BranchClass c : branchClasses) {
             displayBranch(c.getBraText());
         }
+
+        final Button button = (Button) layout.findViewById(R.id.bBranch);
+        button.setOnClickListener(goToNote);
     }
 
     @Override
@@ -62,6 +66,15 @@ public class BranchActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public View.OnClickListener goToNote = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent(getApplicationContext(), NoteActivity.class);
+            i.putExtra("year", "1");
+            startActivity(i);
+        }
+    };
 
     public void onCreateDialog() {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(BranchActivity.this);

@@ -9,6 +9,7 @@
         android:id="@+id/bBranch"
         android:layout_width="130dp"
         android:layout_height="60dp"
+        android:onClick="onClick"
         android:text="Branche" />
 
 
