@@ -6,13 +6,66 @@
     android:layout_height="match_parent"
     tools:context="com.example.gomesan.p_gestionnote_ags_gpt.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <Button
+        android:id="@+id/bResult"
+        android:layout_width="160dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Résultats"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/bFourthYear" />
 
+    <Button
+        android:id="@+id/bFirstYear"
+        android:layout_width="160dp"
+        android:layout_height="77dp"
+        android:text="1ère Année"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.502" />
+
+    <Button
+        android:id="@+id/bSecondYear"
+        android:layout_width="160dp"
+        android:layout_height="77dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:text="2ème Année"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bFirstYear" />
+
+    <Button
+        android:id="@+id/bThirdYear"
+        android:layout_width="160dp"
+        android:layout_height="77dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:text="3ème Année"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bSecondYear" />
+
+    <Button
+        android:id="@+id/bFourthYear"
+        android:layout_width="160dp"
+        android:layout_height="77dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:text="4ème Année"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bThirdYear" />
 </android.support.constraint.ConstraintLayout>

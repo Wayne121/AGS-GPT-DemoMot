@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".BranchActivity" />
+        <activity android:name=".NoteActivity" />
+        <activity android:name=".ParameterActivity">
+
+        </activity>
     </application>
 
 </manifest>
