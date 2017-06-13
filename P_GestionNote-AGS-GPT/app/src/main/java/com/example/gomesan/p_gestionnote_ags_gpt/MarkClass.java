@@ -10,6 +10,26 @@ public class MarkClass {
     String marName;
     String marNote;
     String marYear;
+    String idBranch;
+
+    public MarkClass() {
+
+    }
+
+    public MarkClass(String marName, String marNote, String marYear, String idBranch) {
+        this.marName = marName;
+        this.marNote = marNote;
+        this.marYear = marYear;
+        this.idBranch = idBranch;
+    }
+
+    public MarkClass(int idMark, String marName, String marNote, String marYear, String idBranch) {
+        this.idMark = idMark;
+        this.marName = marName;
+        this.marNote = marNote;
+        this.marYear = marYear;
+        this.idBranch = idBranch;
+    }
 
     public int getIdMark() {
         return idMark;
@@ -48,27 +68,6 @@ public class MarkClass {
     }
 
     public void setIdBranch(String idBranch) {
-        this.idBranch = idBranch;
-    }
-
-    String idBranch;
-
-    public MarkClass() {
-
-    }
-
-    public MarkClass(String marName, String marNote, String marYear, String idBranch) {
-        this.marName = marName;
-        this.marNote = marNote;
-        this.marYear = marYear;
-        this.idBranch = idBranch;
-    }
-
-    public MarkClass(int idMark, String marName, String marNote, String marYear, String idBranch) {
-        this.idMark = idMark;
-        this.marName = marName;
-        this.marNote = marNote;
-        this.marYear = marYear;
         this.idBranch = idBranch;
     }
 

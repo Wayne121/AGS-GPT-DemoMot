@@ -10,6 +10,21 @@ public class BranchClass {
     String braText;
     String braYear;
 
+    public BranchClass(){
+
+    }
+
+    public BranchClass(String braText, String braYear){
+        this.braText = braText;
+        this.braYear = braYear;
+    }
+
+    public BranchClass(int idBranch, String braText, String braYear){
+        this.idBranch = idBranch;
+        this.braText = braText;
+        this.braYear = braYear;
+    }
+
     public int getIdBranch() {
         return idBranch;
     }
@@ -31,22 +46,6 @@ public class BranchClass {
     }
 
     public void setBraYear(String braYear) {
-        this.braYear = braYear;
-    }
-
-
-    public BranchClass(){
-
-    }
-
-    public BranchClass(String braText, String braYear){
-        this.braText = braText;
-        this.braYear = braYear;
-    }
-
-    public BranchClass(int idBranch, String braText, String braYear){
-        this.idBranch = idBranch;
-        this.braText = braText;
         this.braYear = braYear;
     }
 

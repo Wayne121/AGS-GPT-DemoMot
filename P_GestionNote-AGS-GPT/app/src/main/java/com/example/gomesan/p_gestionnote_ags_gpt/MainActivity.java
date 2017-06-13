@@ -3,6 +3,7 @@ package com.example.gomesan.p_gestionnote_ags_gpt;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
             i.putExtra("year", "1");
+
+            Log.i("test", "1");
             startActivity(i);
         }
     };
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
             i.putExtra("year", "2");
+            Log.i("test", "2");
             startActivity(i);
         }
     };

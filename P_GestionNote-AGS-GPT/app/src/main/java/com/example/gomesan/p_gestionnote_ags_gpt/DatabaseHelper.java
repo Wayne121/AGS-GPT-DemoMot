@@ -27,6 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static  final String KEY_YEAR_NOTE = "marYear";
     private static  final String KEY_YEAR_BRANCH = "braYear";
     private static  final String KEY_IDBRANCH_NOTE = "idBranch";
+
     private String createMarkTable = "CREATE TABLE " + TABLE_MARK + "("
             + KEY_ID_MARK + " INTEGER PRIMARY KEY," + KEY_NAME_NOTE + " TEXT,"
             + KEY_NOTE_NOTE + " TEXT," + KEY_YEAR_NOTE + " TEXT,"  + KEY_IDBRANCH_NOTE + " TEXT" + ")";
@@ -72,7 +73,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_ID_BRANCH, branchClass.getIdBranch());
         values.put(KEY_TEXT_BRANCH, branchClass.getBraText());
         values.put(KEY_YEAR_BRANCH, branchClass.getBraYear());
 
@@ -111,8 +111,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<MarkClass> getAllMark(String year, String branch) {
         List<MarkClass> markList = new ArrayList<>();
 
-        //String selectQuery = "SELECT * FROM " + TABLE_MARK + " WHERE " + KEY_YEAR_NOTE + " = " + year + " AND " + KEY_IDBRANCH_NOTE + " = " + branch;
-        String selectQuery = "SELECT * FROM " + TABLE_MARK ;
+        String selectQuery = "SELECT * FROM " + TABLE_MARK + " WHERE " + KEY_YEAR_NOTE + " = " + year + " AND " + KEY_IDBRANCH_NOTE + " = " + branch;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -137,11 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String selectQuery;
 
-        if(year == "1") {
-            selectQuery = "SELECT * FROM " + TABLE_BRANCH + " WHERE " + KEY_YEAR_BRANCH + " = " + year;
-        }else{
-            selectQuery = "SELECT * FROM " + TABLE_BRANCH;
-        }
+        selectQuery = "SELECT * FROM " + TABLE_BRANCH + " WHERE " + KEY_YEAR_BRANCH + " = " + year;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
