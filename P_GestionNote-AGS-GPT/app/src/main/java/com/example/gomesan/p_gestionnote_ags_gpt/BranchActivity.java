@@ -15,7 +15,7 @@ import android.widget.GridLayout;
 
 import java.util.List;
 
-public class BranchActivity extends AppCompatActivity {
+public class BranchActivity extends ParameterActivity {
 
     private ViewGroup layout;
     private DatabaseHelper db = new DatabaseHelper(this);
@@ -25,6 +25,7 @@ public class BranchActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        applyTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_branch);
         layout = (ViewGroup) findViewById(R.id.content);

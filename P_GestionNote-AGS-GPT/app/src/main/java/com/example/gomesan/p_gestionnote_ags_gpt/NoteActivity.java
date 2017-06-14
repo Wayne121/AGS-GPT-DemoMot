@@ -3,9 +3,7 @@ package com.example.gomesan.p_gestionnote_ags_gpt;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +16,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class NoteActivity extends AppCompatActivity {
+public class NoteActivity extends ParameterActivity {
 
 
     private ViewGroup layout;
@@ -28,6 +26,7 @@ public class NoteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        applyTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
         layout = (ViewGroup) findViewById(R.id.content);
@@ -35,10 +34,6 @@ public class NoteActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String years = extras.getString("year");
         String branchName = extras.getString("branchName");
-
-        Log.i("test", years);
-        Log.i("test", branchName);
-
         List<MarkClass> markClassList = db.getAllMark(years,branchName);
 
         for (MarkClass c : markClassList) {
@@ -97,7 +92,6 @@ public class NoteActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final EditText txtName = (EditText) mView.findViewById(R.id.txtName);
                 final EditText txtNote = (EditText) mView.findViewById(R.id.txtNote);
-                Log.i("test", ("nya " + txtName.getText().toString() ));
                 addNoteDB(txtName.getText().toString(), txtNote.getText().toString());
             }
         });
