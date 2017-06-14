@@ -80,4 +80,13 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.21" />
 
+    <TextView
+        android:id="@+id/Valide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="441dp"
+        tools:layout_editor_absoluteY="550dp"
+        tools:ignore="MissingConstraints" />
+
 </android.support.constraint.ConstraintLayout>

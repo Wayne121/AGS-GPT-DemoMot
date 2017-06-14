@@ -1,24 +1,20 @@
 package com.example.gomesan.p_gestionnote_ags_gpt;
 
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends ParameterActivity {
-    //Variable de préférence pour thème de l'utilisateur
-    // /!\ à remplacer par le theme dans le base de donnée /!\
-private String theme = "redTheme";
-
+public class MainActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        applyTheme();
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
         Button bFirstYear = (Button) findViewById(R.id.bFirstYear);
@@ -41,9 +37,8 @@ private String theme = "redTheme";
     private View.OnClickListener branchFirstYear = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String color = "Red";
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
-            i.putExtra("nom", "George");
+            i.putExtra("year", "1");
             startActivity(i);
         }
     };
@@ -52,7 +47,8 @@ private String theme = "redTheme";
         @Override
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
-            i.putExtra("nom", "George");
+            i.putExtra("year", "2");
+            Log.i("test", "2");
             startActivity(i);
         }
     };
@@ -61,7 +57,7 @@ private String theme = "redTheme";
         @Override
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
-            i.putExtra("nom", "George");
+            i.putExtra("year", "3");
             startActivity(i);
         }
     };
@@ -70,7 +66,7 @@ private String theme = "redTheme";
         @Override
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
-            i.putExtra("nom", "George");
+            i.putExtra("year", "4");
             startActivity(i);
         }
     };
