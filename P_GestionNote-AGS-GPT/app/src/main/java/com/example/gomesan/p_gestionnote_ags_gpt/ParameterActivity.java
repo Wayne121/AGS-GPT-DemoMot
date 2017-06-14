@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 public class ParameterActivity extends AppCompatActivity {
@@ -19,6 +21,7 @@ public class ParameterActivity extends AppCompatActivity {
     //String qui vont contenir la couleur du theme et du texte
     public static String themeColor;
     public static String themeTextColor;
+    public static String passwordLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,41 @@ public class ParameterActivity extends AppCompatActivity {
         //initialisation du bouton et si le bouton est cliqué appel la méthode bChangeListener
         Button bChange = (Button) findViewById(R.id.bChange);
         bChange.setOnClickListener(bChangeListener);
+
+
+        Button bChangePassword = (Button) findViewById(R.id.bPasswordEdit);
+        bChangePassword.setOnClickListener(bChangePasswordListener);
+
+
+    }
+
+    private View.OnClickListener bChangePasswordListener = new View.OnClickListener() {
+        //API pour le finishAffinity()
+        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+        @Override
+        public void onClick(View v) {
+            EditText txtPasswordLogin = (EditText) findViewById(R.id.txtPasswordEdit);
+            SharedPreferences passwordChange = getSharedPreferences("Data", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = passwordChange.edit();
+
+            passwordLogin = txtPasswordLogin.getText().toString();
+                              /*Clé         Donnée*/
+            editor.putString("passwordLogin",passwordLogin);
+
+            //Commit pour sauvegarder ce qui a été enregistré dans les preferences
+            editor.commit();
+
+            //Créé une nouvelle activité Main Activity et ferme les toutes les autres
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finishAffinity();
+        }
+    };
+
+    public String getPassword(){
+        SharedPreferences passwordChange = getSharedPreferences("Data", Context.MODE_PRIVATE);
+        String storageThemeColor = passwordChange.getString("passwordLogin", "admin");
+        return storageThemeColor;
     }
 
     //Méthode quand le bouton est touché
