@@ -36,6 +36,9 @@ public class NoteActivity extends AppCompatActivity {
         String years = extras.getString("year");
         String branchName = extras.getString("branchName");
 
+        Log.i("test", years);
+        Log.i("test", branchName);
+
         List<MarkClass> markClassList = db.getAllMark(years,branchName);
 
         for (MarkClass c : markClassList) {

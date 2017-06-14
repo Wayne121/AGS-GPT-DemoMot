@@ -20,6 +20,8 @@ public class BranchActivity extends AppCompatActivity {
     private ViewGroup layout;
     private DatabaseHelper db = new DatabaseHelper(this);
     private Button button;
+    int i;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +36,12 @@ public class BranchActivity extends AppCompatActivity {
 
         List<BranchClass> branchClasses = db.getAllBranch(years);
         for (BranchClass c : branchClasses) {
-            button = new Button(this);
-            button.setText(c.getBraText());
-            button.setHeight(200);
-            button.setWidth(330);
-
-            Log.i("test", (String.valueOf(this.button.getId())));
-            layout.addView(button);
-            button.setOnClickListener(goToNote);
+            showButton(c.getBraText(),c.getIdBranch());
         }
-
+        i = db.getBranchCount();
+        Log.i("test", String.valueOf(i));
+        i++;
+        Log.i("test", String.valueOf(i));
     }
 
     @Override
@@ -71,9 +69,11 @@ public class BranchActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), NoteActivity.class);
-            i.putExtra("year", "1");
-            i.putExtra("branchName", button.getText());
-            Log.i("test", (String.valueOf(button.getId())));
+            Bundle extras = getIntent().getExtras();
+            String years = extras.getString("year");
+
+            i.putExtra("year", years);
+            i.putExtra("branchName", String.valueOf(v.getId()));
             startActivity(i);
         }
     };
@@ -98,16 +98,27 @@ public class BranchActivity extends AppCompatActivity {
     }
 
     private void addButtonBD(String name){
-
         Bundle extras = getIntent().getExtras();
         String years = extras.getString("year");
 
-        db.addBranch(new BranchClass(name, years));
         button = new Button(this);
+        db.addBranch(new BranchClass(i ,name , years));
         button.setText(name);
+        button.setId(i++);
         button.setHeight(200);
         button.setWidth(330);
         layout.addView(button);
         button.setOnClickListener(goToNote);
+    }
+
+    private void showButton(String name, int id){
+        button = new Button(this);
+        button.setText(name);
+        button.setId(id);
+        button.setHeight(200);
+        button.setWidth(330);
+        layout.addView(button);
+        button.setOnClickListener(goToNote);
+       // i = id;
     }
 }

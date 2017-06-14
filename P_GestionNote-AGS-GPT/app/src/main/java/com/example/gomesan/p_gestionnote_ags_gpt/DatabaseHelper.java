@@ -73,6 +73,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(KEY_ID_BRANCH, branchClass.getIdBranch());
         values.put(KEY_TEXT_BRANCH, branchClass.getBraText());
         values.put(KEY_YEAR_BRANCH, branchClass.getBraYear());
 

@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
             i.putExtra("year", "1");
-
-            Log.i("test", "1");
             startActivity(i);
         }
     };
