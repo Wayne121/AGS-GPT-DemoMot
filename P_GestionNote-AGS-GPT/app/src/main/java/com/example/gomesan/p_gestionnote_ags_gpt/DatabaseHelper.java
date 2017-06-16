@@ -10,11 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by gomesan on 07.06.2017.
+ * Author: Gomesan
+ * Lieu: ETML
+ * Description: Class qui permet de gérer notre base de donnée
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    //Déclaration des variables
     private static  final int DATABASE_VERSION = 1;
     private static  final String DATABASE_NAME = "noteManager";
     private static  final String TABLE_MARK = "Mark";
@@ -28,23 +31,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static  final String KEY_YEAR_BRANCH = "braYear";
     private static  final String KEY_IDBRANCH_NOTE = "idBranch";
 
+    //Variable pour créer la table des notes
     private String createMarkTable = "CREATE TABLE " + TABLE_MARK + "("
             + KEY_ID_MARK + " INTEGER PRIMARY KEY," + KEY_NAME_NOTE + " TEXT,"
             + KEY_NOTE_NOTE + " TEXT," + KEY_YEAR_NOTE + " TEXT,"  + KEY_IDBRANCH_NOTE + " TEXT" + ")";
+
+    //Variable pour créer la table des branches
     private String createBranchTable = "CREATE TABLE " + TABLE_BRANCH + "("
             + KEY_ID_BRANCH + " INTEGER PRIMARY KEY," + KEY_TEXT_BRANCH + " TEXT,"
             + KEY_YEAR_BRANCH+ " TEXT" + ")";
 
+    //Constructeur de la classe
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    //Méthode pour créer les tables
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(createMarkTable);
         db.execSQL(createBranchTable);
     }
 
+    //Méthode pour supprimer les tables si elles existent et les recréer
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
@@ -56,6 +65,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    //Méthode pour ajouter un objet de la classe MarkClass dans la base de donnée
+    //Spécifique pour l'ajout de note classique
     void addMark(MarkClass markClass){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -69,6 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    //Méthode pour ajouter un objet de la classe BranchClass dans la base de donnée
     void addBranch(BranchClass branchClass){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -81,6 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    //Méthode qui permet de récupérer un élement de la table Mark à partir de son id
     MarkClass getMark(int id){
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -95,6 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return markClass;
     }
 
+    //Màthode qui permet de récupérer un élement de la table Branch à partir de son id
     BranchClass getBranch(int id){
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -109,6 +123,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return branchClass;
     }
 
+    //Méthode qui permet de récuperer toute les informations de la table Mark
+    //Retourne une liste
     public List<MarkClass> getAllMark(String year, String branch) {
         List<MarkClass> markList = new ArrayList<>();
 
@@ -118,6 +134,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if(cursor.moveToFirst()) {
+            //Boucle qui ajoute les informations souhaitées
             do {
                 MarkClass markClass = new MarkClass();
                 markClass.setIdMark(Integer.parseInt(cursor.getString(0)));
@@ -132,6 +149,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return markList;
     }
 
+    //Méthode qui permet de récuperer toute les informations de la table Branch
+    //Retourne une liste
     public List<BranchClass> getAllBranch(String year) {
         List<BranchClass> branchList = new ArrayList<>();
 
@@ -143,6 +162,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if(cursor.moveToFirst()) {
+            //Boucle qui ajoute les informations souhaitées
             do {
                 BranchClass branchClass = new BranchClass();
                 branchClass.setIdBranch(Integer.parseInt(cursor.getString(0)));
@@ -155,6 +175,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return branchList;
     }
 
+    //Méthode qui permet de supprimer un object de type MarkClass via son ID
     public void deleteMark(MarkClass markClass){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_MARK,KEY_ID_MARK + "=?", new String[] {String.valueOf(markClass.getIdMark())});
@@ -162,6 +183,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    //Méthode qui permet de supprimer un object de type BranchClass via son ID
     public void deleteBranch(BranchClass branchClass){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_BRANCH,KEY_ID_BRANCH + "=?", new String[] {String.valueOf(branchClass.getIdBranch())});
@@ -169,6 +191,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    //Méthode qui permet de retourner le nombre d'entité dans la table des notes
     public int getMarkCount(){
         String countQuery = "SELECT * FROM " + TABLE_MARK;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -177,6 +200,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return  cursor.getCount();
     }
 
+    //Méthode qui permet de retourner le nombre de valuer dans la table des branches
     public int getBranchCount(){
         String countQuery = "SELECT * FROM " + TABLE_BRANCH;
         SQLiteDatabase db = this.getReadableDatabase();

@@ -1,21 +1,26 @@
 package com.example.gomesan.p_gestionnote_ags_gpt;
 
 /**
- * Created by gomesan on 07.06.2017.
+ * Author: Gomesan
+ * Lieu: ETML
+ * Description: Classe d'objet pour les notes
  */
 
 public class MarkClass {
 
+    //Déclaration des variables
     int idMark;
     String marName;
     String marNote;
     String marYear;
     String idBranch;
 
+    //Constructeur sans paramètre
     public MarkClass() {
 
     }
 
+    //Constructeur avec quatre paramètres
     public MarkClass(String marName, String marNote, String marYear, String idBranch) {
         this.marName = marName;
         this.marNote = marNote;
@@ -23,6 +28,7 @@ public class MarkClass {
         this.idBranch = idBranch;
     }
 
+    //Constructeur avec tous les paramètres
     public MarkClass(int idMark, String marName, String marNote, String marYear, String idBranch) {
         this.idMark = idMark;
         this.marName = marName;
@@ -31,6 +37,7 @@ public class MarkClass {
         this.idBranch = idBranch;
     }
 
+    //Getter et Setter de toutes les variables
     public int getIdMark() {
         return idMark;
     }
