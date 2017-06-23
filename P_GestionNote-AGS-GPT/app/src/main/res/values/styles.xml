@@ -52,7 +52,7 @@
 
     </style>
 
-    <style name="redTheme" parent="Theme.AppCompat.Light">
+    <style name="redTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#f44336</item>
         <item name="colorPrimaryDark">#ba000d</item>

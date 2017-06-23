@@ -1,9 +1,7 @@
 package com.example.gomesan.p_gestionnote_ags_gpt;
 
 /**
- * Author: Gomesan
- * Lieu: ETML
- * Description: Classe d'objet pour les branches
+ * Created by gomesan on 07.06.2017.
  */
 
 public class BranchClass {

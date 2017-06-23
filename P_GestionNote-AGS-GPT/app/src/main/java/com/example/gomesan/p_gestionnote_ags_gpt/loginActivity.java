@@ -41,6 +41,7 @@ public class loginActivity extends ParameterActivity {
                     //Redirige vers l'activité princpal
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
+                    finish();
                 }else{
                     //Affiche si le mot de passe est eronné
                     Toast.makeText(getApplicationContext(), "Mot de passe erroné",Toast.LENGTH_SHORT).show();

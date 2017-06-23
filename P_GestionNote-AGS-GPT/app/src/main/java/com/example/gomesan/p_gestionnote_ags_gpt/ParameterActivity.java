@@ -14,6 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+/**
+ * Créé par : André Gomes & Grégory Poget
+ * Dans la période du 29 mai au 26 juin 2017
+ * Description : Activité gérant les préférences de l'utilisateur (thème, mot de passe)
+ * ETML
+ */
+
 public class ParameterActivity extends AppCompatActivity {
     //Initialisation tableau de string pour le spinner
     private String[] arraySpinner;
@@ -33,19 +40,18 @@ public class ParameterActivity extends AppCompatActivity {
         this.arraySpinner = new String[] {
                 "Rouge", "Bleu", "Vert", "Orange", "Jaune", "Rose", "Bleu Clair", "Brun", "Gris",
         };
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, arraySpinner);
+        //Création d'un adapter, pour des spinner item, et on donne le tableau créé précedemment
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySpinner);
+        //Initialisation du spinner
         Spinner s = (Spinner) findViewById(R.id.spinner);
+        //Ajout de l'adapter sur le spinner
         s.setAdapter(adapter);
         //initialisation du bouton et si le bouton est cliqué appel la méthode bChangeListener
         Button bChange = (Button) findViewById(R.id.bChange);
         bChange.setOnClickListener(bChangeListener);
-
-
+        //Bouton pour modifier son mot de passe
         Button bChangePassword = (Button) findViewById(R.id.bPasswordEdit);
         bChangePassword.setOnClickListener(bChangePasswordListener);
-
-
     }
 
     private View.OnClickListener bChangePasswordListener = new View.OnClickListener() {

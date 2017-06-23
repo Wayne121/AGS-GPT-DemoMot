@@ -2,6 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item
+        android:id="@+id/menu_erase"
+        android:orderInCategory="101"
+        android:title="Supprimer la branche" />
     <item android:id="@+id/menu_option"
         android:orderInCategory="100"
         app:showAsAction="never"
@@ -11,4 +15,14 @@
         android:orderInCategory="100"
         app:showAsAction="never"
         android:title="Ajouter une note" />
+
+    <item
+        android:id="@+id/menu_notePond"
+        android:orderInCategory="100"
+        android:title="Ajouter une note pondérée"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_eraseMark"
+        android:orderInCategory="101"
+        android:title="Supprimer toutes les notes" />
 </menu>

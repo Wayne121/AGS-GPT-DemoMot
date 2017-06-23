@@ -1,7 +1,6 @@
 package com.example.gomesan.p_gestionnote_ags_gpt;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -10,60 +9,55 @@ import android.view.View;
 import android.widget.Button;
 
 /**
- * Author: Gomesan
- * Lieu: ETML
- * Description: Activité principal de l'application
+ * Créé par : André Gomes & Grégory Poget
+ * Dans la période du 29 mai au 26 juin 2017
+ * Description : Activité principale du site ou se retrouve l'utilisateur après s'ête log
+ * ETML
  */
 
 public class MainActivity extends ParameterActivity {
 
-    //Constructeur de l'activité
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Utilise la méthode de l'activité ParameterActivity pour changer le thème de l'activité
+        //Application du thème à l'activité
         applyTheme();
-        //Charge les informations de base de l'activité
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Déclare le bouton pour la première année
+        //Initialisation des différents boutons
         Button bFirstYear = (Button) findViewById(R.id.bFirstYear);
         bFirstYear.setOnClickListener(branchFirstYear);
 
-        //Déclare le bouton pour la seconde année
         Button bSecondYear = (Button) findViewById(R.id.bSecondYear);
         bSecondYear.setOnClickListener(branchSecondYear);
 
-        //Déclare le bouton pour la troisième année
         Button bThirdYear = (Button) findViewById(R.id.bThirdYear);
         bThirdYear.setOnClickListener(branchThirdYear);
 
-        //Déclare le bouton pour la quatrième année
         Button bFourthYear = (Button) findViewById(R.id.bFourthYear);
         bFourthYear.setOnClickListener(branchFourthYear);
 
-        //Déclare le bouton pour les résultat
         Button bResult = (Button) findViewById(R.id.bResult);
         bResult.setOnClickListener(noteResult);
 
     }
 
-    //Méthode de clique de la première année
+    //Si le bouton de 1ère année est appuyé
     private View.OnClickListener branchFirstYear = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //Renvoie vers l'activié des branches en transmettant des informations
+            //Création d'une activité avec l'extra de l'année du bouton
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
             i.putExtra("year", "1");
             startActivity(i);
         }
     };
 
-    //Méthode de clique de la seconde année
+    //Si le bouton de 2ème année est appuyé
     private View.OnClickListener branchSecondYear = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //Renvoie vers l'activié des branches en transmettant des informations
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
             i.putExtra("year", "2");
             Log.i("test", "2");
@@ -71,51 +65,51 @@ public class MainActivity extends ParameterActivity {
         }
     };
 
-    //Méthode de clique de la troisième année
+    //Si le bouton de 3ème année est appuyé
     private View.OnClickListener branchThirdYear = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //Renvoie vers l'activié des branches en transmettant des informations
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
             i.putExtra("year", "3");
             startActivity(i);
         }
     };
 
-    //Méthode de clique de la quatrième année
+    //Si le bouton de 4ème année est appuyé
     private View.OnClickListener branchFourthYear = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //Renvoie vers l'activié des branches en transmettant des informations
             Intent i = new Intent(getApplicationContext(), BranchActivity.class);
             i.putExtra("year", "4");
             startActivity(i);
         }
     };
 
-    //Méthode de clique des résultats
+    //Si le bouton de resultats est appuyé
     private View.OnClickListener noteResult = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            //Renvoie vers l'activié des résultats en transmettant des informations
-            Intent i = new Intent(getApplicationContext(), NoteActivity.class);
+            Intent i = new Intent(getApplicationContext(), ResultActivity.class);
             i.putExtra("nom", "George");
             startActivity(i);
         }
     };
 
-    //Méthode qui permet d'instancier le menu
-    @Override
+    //Quand on clique sur les 3 ronds dans le coin supérieur droit
     public boolean onCreateOptionsMenu(Menu menu) {
+        //Affiche le menu des branches
         getMenuInflater().inflate(R.menu.parameter_menu, menu);
         return true;
     }
 
-    //Méthode qui permet pour chaque item dans le menu d'avoir une action
     @Override
+    //Quand on choisit une des options dans le menu
     public boolean onOptionsItemSelected(MenuItem item) {
+        //fait un switch sur ce qui a été cliqué
         switch (item.getItemId() ) {
+            //Si c'est le bouton option
             case R.id.menu_option:
+                //Crée une activité option et la démarre
                 Intent intent = new Intent(this, ParameterActivity.class);
                 this.startActivity(intent);
                 return true;

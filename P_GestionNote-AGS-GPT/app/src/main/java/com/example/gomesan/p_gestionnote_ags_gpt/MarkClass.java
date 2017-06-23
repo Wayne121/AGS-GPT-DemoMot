@@ -1,43 +1,45 @@
 package com.example.gomesan.p_gestionnote_ags_gpt;
 
 /**
- * Author: Gomesan
- * Lieu: ETML
- * Description: Classe d'objet pour les notes
+ * Created by gomesan on 07.06.2017.
  */
 
 public class MarkClass {
 
-    //Déclaration des variables
     int idMark;
     String marName;
     String marNote;
     String marYear;
     String idBranch;
+    String marPourcent;
 
-    //Constructeur sans paramètre
     public MarkClass() {
 
     }
 
-    //Constructeur avec quatre paramètres
     public MarkClass(String marName, String marNote, String marYear, String idBranch) {
         this.marName = marName;
         this.marNote = marNote;
         this.marYear = marYear;
         this.idBranch = idBranch;
     }
+    public MarkClass(String marName, String marNote, String marYear, String idBranch, String marPourcent) {
+        this.marName = marName;
+        this.marNote = marNote;
+        this.marYear = marYear;
+        this.idBranch = idBranch;
+        this.marPourcent = marPourcent;
+    }
 
-    //Constructeur avec tous les paramètres
-    public MarkClass(int idMark, String marName, String marNote, String marYear, String idBranch) {
+    public MarkClass(int idMark, String marName, String marNote, String marYear, String idBranch, String marPourcent) {
         this.idMark = idMark;
         this.marName = marName;
         this.marNote = marNote;
         this.marYear = marYear;
         this.idBranch = idBranch;
+        this.marPourcent = marPourcent;
     }
 
-    //Getter et Setter de toutes les variables
     public int getIdMark() {
         return idMark;
     }
@@ -76,6 +78,14 @@ public class MarkClass {
 
     public void setIdBranch(String idBranch) {
         this.idBranch = idBranch;
+    }
+
+    public String getMarPourcent() {
+        return marPourcent;
+    }
+
+    public void setMarPourcent(String marPourcent) {
+        this.marPourcent = marPourcent;
     }
 
 }

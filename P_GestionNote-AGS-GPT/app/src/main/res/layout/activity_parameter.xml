@@ -8,45 +8,26 @@
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
-    <TextView
-        android:id="@+id/txtType"
+    <EditText
+        android:id="@+id/txtPasswordEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CFC"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="24dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline3" />
-
-    <Button
-        android:id="@+id/bChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="67dp"
-        android:layout_marginTop="32dp"
-        android:text="Valider"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="33dp"
+        android:ems="10"
+        android:inputType="textPassword"
         app:layout_constraintLeft_toLeftOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/bChange" />
 
     <TextView
         android:id="@+id/txtColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="51dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="0dp"
         android:text="Couleur du Thème: "
         app:layout_constraintLeft_toLeftOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
-
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RadioButton"
-        app:layout_constraintLeft_toRightOf="@+id/txtType"
-        android:layout_marginLeft="24dp"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        android:layout_marginTop="16dp" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -80,25 +61,24 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.21" />
 
-    <EditText
-        android:id="@+id/txtPasswordEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="33dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/bChange" />
-
     <Button
         android:id="@+id/bPasswordEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Changer mot de passe"
-        app:layout_constraintTop_toBottomOf="@+id/txtPasswordEdit"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline3" />
+        android:layout_marginTop="24dp"
+        android:text="Changer mot de passe"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/txtPasswordEdit" />
+
+    <Button
+        android:id="@+id/bChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="67dp"
+        android:layout_marginTop="32dp"
+        android:text="Valider"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
 </android.support.constraint.ConstraintLayout>

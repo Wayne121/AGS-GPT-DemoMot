@@ -30,11 +30,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static  final String KEY_YEAR_NOTE = "marYear";
     private static  final String KEY_YEAR_BRANCH = "braYear";
     private static  final String KEY_IDBRANCH_NOTE = "idBranch";
+    private static  final String KEY_POURCENT_NOTE = "marPourcent";
 
     //Variable pour créer la table des notes
     private String createMarkTable = "CREATE TABLE " + TABLE_MARK + "("
             + KEY_ID_MARK + " INTEGER PRIMARY KEY," + KEY_NAME_NOTE + " TEXT,"
-            + KEY_NOTE_NOTE + " TEXT," + KEY_YEAR_NOTE + " TEXT,"  + KEY_IDBRANCH_NOTE + " TEXT" + ")";
+            + KEY_NOTE_NOTE + " TEXT," + KEY_YEAR_NOTE + " TEXT,"  + KEY_IDBRANCH_NOTE + " TEXT,"
+            + KEY_POURCENT_NOTE + " TEXT" + ")";
 
     //Variable pour créer la table des branches
     private String createBranchTable = "CREATE TABLE " + TABLE_BRANCH + "("
@@ -64,7 +66,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-
     //Méthode pour ajouter un objet de la classe MarkClass dans la base de donnée
     //Spécifique pour l'ajout de note classique
     void addMark(MarkClass markClass){
@@ -75,6 +76,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(KEY_NOTE_NOTE, markClass.getMarNote());
         values.put(KEY_YEAR_NOTE, markClass.getMarYear());
         values.put(KEY_ID_BRANCH, markClass.getIdBranch());
+
+        db.insert(TABLE_MARK, null, values);
+        db.close();
+    }
+
+    //Méthode pour ajouter une note pondérée dans la base de donnée
+    void addMarkPond(MarkClass markClass){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME_NOTE, markClass.getMarName());
+        values.put(KEY_NOTE_NOTE, markClass.getMarNote());
+        values.put(KEY_YEAR_NOTE, markClass.getMarYear());
+        values.put(KEY_ID_BRANCH, markClass.getIdBranch());
+        values.put(KEY_POURCENT_NOTE, markClass.getMarPourcent());
 
         db.insert(TABLE_MARK, null, values);
         db.close();
@@ -103,7 +119,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
 
-        MarkClass markClass = new MarkClass(Integer.parseInt(cursor.getString(0)), cursor.getString(1),  cursor.getString(2),cursor.getString(3), cursor.getString(4));
+        MarkClass markClass = new MarkClass(Integer.parseInt(cursor.getString(0)), cursor.getString(1),  cursor.getString(2),cursor.getString(3), cursor.getString(4), cursor.getString(5));
 
         return markClass;
     }
@@ -142,6 +158,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 markClass.setMarNote(cursor.getString(2));
                 markClass.setMarYear(cursor.getString(3));
                 markClass.setIdBranch(cursor.getString(4));
+                markClass.setMarPourcent(cursor.getString(5));
 
                 markList.add(markClass);
             }while (cursor.moveToNext());
@@ -162,8 +179,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if(cursor.moveToFirst()) {
-            //Boucle qui ajoute les informations souhaitées
             do {
+                //Boucle qui ajoute les informations souhaitées
                 BranchClass branchClass = new BranchClass();
                 branchClass.setIdBranch(Integer.parseInt(cursor.getString(0)));
                 branchClass.setBraText(cursor.getString(1));
