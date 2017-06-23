@@ -108,7 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return markClass;
     }
 
-    //Màthode qui permet de récupérer un élement de la table Branch à partir de son id
+    //Méthode qui permet de récupérer un élement de la table Branch à partir de son id
     BranchClass getBranch(int id){
         SQLiteDatabase db = this.getReadableDatabase();
 

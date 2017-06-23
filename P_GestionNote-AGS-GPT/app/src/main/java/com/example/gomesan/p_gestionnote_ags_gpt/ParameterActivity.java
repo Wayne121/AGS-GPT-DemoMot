@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -54,14 +53,15 @@ public class ParameterActivity extends AppCompatActivity {
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         @Override
         public void onClick(View v) {
+            //Instancie l'EditText
             EditText txtPasswordLogin = (EditText) findViewById(R.id.txtPasswordEdit);
+            //Création des SharedPreferences
             SharedPreferences passwordChange = getSharedPreferences("Data", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = passwordChange.edit();
-
+            //récupération du login de l'utilisateur
             passwordLogin = txtPasswordLogin.getText().toString();
-                              /*Clé         Donnée*/
+            //Ajoute dans les SharedPreferences le mot de passe
             editor.putString("passwordLogin",passwordLogin);
-
             //Commit pour sauvegarder ce qui a été enregistré dans les preferences
             editor.commit();
 
@@ -73,8 +73,12 @@ public class ParameterActivity extends AppCompatActivity {
     };
 
     public String getPassword(){
+        //Création du Shared Preferences
         SharedPreferences passwordChange = getSharedPreferences("Data", Context.MODE_PRIVATE);
-        String storageThemeColor = passwordChange.getString("passwordLogin", "admin");
+        //Récupération dans une variable le mot de passe
+        //Mot de passe de base : .Etml-
+        String storageThemeColor = passwordChange.getString("passwordLogin", ".Etml-");
+        //Return le mot de passe
         return storageThemeColor;
     }
 

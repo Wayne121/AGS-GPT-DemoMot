@@ -1,8 +1,6 @@
 package com.example.gomesan.p_gestionnote_ags_gpt;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,11 +29,11 @@ public class loginActivity extends ParameterActivity {
         bLogin = (Button)findViewById(R.id.bConnexion);
         txtLogin = (EditText) findViewById(R.id.txtLogin);
 
-        //click du bouton bLogin qui permet de vérifier les informations du mot de passe entrée
+        //click du bouton bLogin qui permet de vérifier les informations du mot de passe entré
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Vérifie si le mot de passe entrée corespond au mot de passe configurer
+                //Vérifie si le mot de passe entré correspond au mot de passe configuré
                 if(txtLogin.getText().toString().equals(getPassword())) {
                     Toast.makeText(getApplicationContext(),
                             "Redirection...",Toast.LENGTH_SHORT).show();
